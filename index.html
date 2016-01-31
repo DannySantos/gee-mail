@@ -9,7 +9,52 @@
 	        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 	        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
 
+	        // Declare variable to store the emails & formatting in
+	        var messages;
+
+	        // Function to change format of the date for display purposes
+	        function getFormattedDate(date) {
+			  var year = date.getFullYear();
+			  var month = (1 + date.getMonth()).toString();
+			  month = month.length > 1 ? month : '0' + month;
+			  var day = date.getDate().toString();
+			  day = day.length > 1 ? day : '0' + day;
+			  return month + '/' + day + '/' + year;
+			}
+
+			// Function to loop through the geemails object and add rows to the messages variable
+	        function displayRows() {
+	        	for (var i = 0; i < geemails.length; i++) {
+	        		messages += "<a href=\"#popup\"><div class=\"message-row\"><input type=\"checkbox\"><span>" + 
+	        					geemails[i].sender + 
+	        					"</span><div><span>" + 
+	        					geemails[i].subject + 
+	        					"</span> - <span>" + 
+	        					geemails[i].body.substring(0, 70) + 
+	        					"...</span></div><span>" + 
+	        					getFormattedDate(geemails[i].date) + 
+	        					"</span></div></a>";
+	        	}
+	        }
+
+	        displayRows();
+
+	        // Place the messages into the HTML
+	        document.getElementById("displayMessages").innerHTML = messages;
+
+	        // Place the inbox count into the HTML
+	        document.getElementById("inboxCount").innerHTML = "1-" + geemails.length + " of " + geemails.length;
+
+
+
+
+	        // ****************************************************************************************
+	        console.log(geemails); 
+	        console.log(geemails[0].date); 
+	        console.log(messages); 
+
 	    };
+
 	    </script>
 
 	</head>
@@ -43,7 +88,7 @@
 					<a href="#" alt="older"></a>
 					<a href="#" alt="newer"></a>
 
-					<span>1-50 of 50</span>
+					<span id="inboxCount">1-50 of 50</span>
 				</div>
 
 			</div>
@@ -74,127 +119,21 @@
 
 				<div id="displayMessages">
 
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
-
-					<div class="message-row">
-
-						<input type="checkbox">
-						
-						<span>Sender</span>
-
-						<span>Subject - dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</span>
-
-						<span>01/01/01</span>
-
-					</div>
+					
 
 				</div>
+
+			</div>
+
+		</div>
+
+		<div id="popup" class="overlay">
+
+			<div class="popup">
+				
+				<a class="close" href="#">x</a>
+
+				<h2>Email</h2>
 
 			</div>
 
