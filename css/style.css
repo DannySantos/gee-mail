@@ -281,9 +281,9 @@ header + div {
 
 .popup {
   margin: 70px auto;
-  padding: 20px 20px 50px 20px;
+  padding: 5% 5% 3% 5%;
   background: #fff;
-  width: 80%;
+  width: 50%;
   position: relative;
 }
 
@@ -296,3 +296,48 @@ header + div {
   text-decoration: none;
   color: #333;
 }
+
+#popupContent h3:before {
+	content: "Sender: ";
+	font-weight: bold;
+	font-size: 0.9em;
+	color: #000;
+}
+
+#popupContent p:nth-child(2) {
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+
+#popupContent p:nth-child(2):before {
+	content: "Subject: ";
+	font-weight: bold;
+}
+
+#popupContent p:nth-child(3):before {
+	content: "Message: ";
+	font-weight: bold;
+}
+
+#popupContent p:nth-child(4):before {
+	content: "Date: ";
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

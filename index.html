@@ -26,7 +26,7 @@
 	        function displayRows() {
 	        	for (var i = 0; i < geemails.length; i++) {
 	        		if (typeof messages == 'undefined') {
-		        		messages = "<div class=\"message-row\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
+		        		messages = "<div id=\"message" + i + "\" class=\"message-row\" onclick=\"showMessage('message" + i + "')\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
 		        					geemails[i].sender + 
 		        					"</span><div><span>" + 
 		        					geemails[i].subject + 
@@ -36,7 +36,7 @@
 		        					getFormattedDate(geemails[i].date) + 
 		        					"</span></a></div>";
 	        		} else {
-		        		messages += "<div class=\"message-row\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
+		        		messages += "<div id=\"message" + i + "\" class=\"message-row\" onclick=\"showMessage('message" + i + "')\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
 		        					geemails[i].sender + 
 		        					"</span><div><span>" + 
 		        					geemails[i].subject + 
@@ -57,15 +57,27 @@
 	        // Place the inbox count into the HTML
 	        document.getElementById("inboxCount").innerHTML = "1-" + geemails.length + " of " + geemails.length;
 
-
-
-
-	        // ****************************************************************************************
-	        console.log(geemails); 
-	        console.log(geemails[0].date); 
-	        console.log(messages);
-
 	    };
+
+	    /////////////////////////////////////////////////////////////////////
+	    //     HAD TO MOVE THESE THINGS OUTSIDE OF THE ONLOAD FUNCTION     //
+	    /////////////////////////////////////////////////////////////////////
+
+	    // Declare variable to store contents of the email as shown by the popup
+        var showMessagesArray = [];
+
+        // Fill array with contents using message row div IDs as keys
+		for(i = 0; i < geemails.length; i++) {
+			showMessagesArray['message' + i] = "<h3>" + geemails[i].sender + "</h3>" +
+	        									"<p>" + geemails[i].subject + "</p>" + 
+	        									"<p>" + geemails[i].body + "</p>" + 
+	        									"<p>" + geemails[i].date + "</p>";
+		}
+
+        // Function to replace content of the popup to the relevant array value. Activated by the onClick event assigned in displayRows
+		function showMessage(divId) {
+			document.getElementById('popupContent').innerHTML = showMessagesArray[divId];
+		}
 
 	    </script>
 
@@ -131,22 +143,6 @@
 
 				<div id="displayMessages">
 
-				<!-- ******************************************************************************** -->
-
-							<div class="message-row">
-								<input type="checkbox">
-								<a href="#popup">
-									<span>sender</span>
-									<div>
-										<span>subject</span>
-										<span>body.substring</span>
-									</div>
-									<span>Date</span>
-								</a>
-							</div>
-
-				<!-- ******************************************************************************** -->
-
 				</div>
 
 			</div>
@@ -159,7 +155,11 @@
 				
 				<a class="close" href="#">x</a>
 
-				<h2>Email</h2>
+					<div id="popupContent">
+
+						<h2>Email</h2>
+
+					</div>
 
 			</div>
 
