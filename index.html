@@ -57,6 +57,31 @@
 	        // Place the inbox count into the HTML
 	        document.getElementById("inboxCount").innerHTML = "1-" + geemails.length + " of " + geemails.length;
 
+
+	        var intervalCounter = 10;
+
+	        setInterval(function(){ 
+
+	        	var newMessage = getNewMessage();
+	        	geemails.push(newMessage);
+	        	messages += "<div id=\"message" + intervalCounter + "\" class=\"message-row\" onclick=\"showMessage('message" + intervalCounter + "')\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
+		        					geemails[intervalCounter].sender + 
+		        					"</span><div><span>" + 
+		        					geemails[intervalCounter].subject + 
+		        					"</span> - <span>" + 
+		        					geemails[intervalCounter].body.substring(0, 80) + 
+		        					"...</span></div><span>" + 
+		        					getFormattedDate(geemails[intervalCounter].date) + 
+		        					"</span></a></div>";
+
+	        	document.getElementById("displayMessages").innerHTML = messages;
+	       		
+	       		document.getElementById("inboxCount").innerHTML = "1-" + geemails.length + " of " + geemails.length;
+
+	        	intervalCounter++;
+
+	        }, 10000);
+
 	    };
 
 	    /////////////////////////////////////////////////////////////////////
@@ -143,6 +168,8 @@
 
 				<div id="displayMessages">
 
+					<!-- displayRows populates this with email contents -->
+
 				</div>
 
 			</div>
@@ -157,7 +184,7 @@
 
 					<div id="popupContent">
 
-						<h2>Email</h2>
+						<!-- showMessage populates this with email contents -->
 
 					</div>
 
