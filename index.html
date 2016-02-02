@@ -24,7 +24,7 @@
 
 			// Function to loop through the geemails object and add rows to the messages variable
 	        function displayRows() {
-	        	for (var i = 0; i < geemails.length; i++) {
+	        	for (var i = geemails.length - 1; i >= 0; i--) {
 	        		if (typeof messages == 'undefined') {
 		        		messages = "<div id=\"message" + i + "\" class=\"message-row\" onclick=\"showMessage('message" + i + "')\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
 		        					geemails[i].sender + 
@@ -64,15 +64,10 @@
 
 	        	var newMessage = getNewMessage();
 	        	geemails.push(newMessage);
-	        	messages += "<div id=\"message" + intervalCounter + "\" class=\"message-row\" onclick=\"showMessage('message" + intervalCounter + "')\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
-		        					geemails[intervalCounter].sender + 
-		        					"</span><div><span>" + 
-		        					geemails[intervalCounter].subject + 
-		        					"</span> - <span>" + 
-		        					geemails[intervalCounter].body.substring(0, 80) + 
-		        					"...</span></div><span>" + 
-		        					getFormattedDate(geemails[intervalCounter].date) + 
-		        					"</span></a></div>";
+
+	        	messages = [];
+
+	        	displayRows()
 
 	        	document.getElementById("displayMessages").innerHTML = messages;
 	       		
@@ -80,7 +75,9 @@
 
 	        	intervalCounter++;
 
-	        }, 10000);
+	        	console.log(messages.length);
+
+	        }, 15000);
 
 	    };
 
