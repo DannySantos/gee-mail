@@ -22,6 +22,7 @@ h1,h2,h3,h4 {
 	margin: 0;
 	padding: 0;
 	font-weight: normal;
+	color: #D44937;
 }
 
 ul {
@@ -71,12 +72,20 @@ header + div {
 		display: block;
 		width: 70px;
 		height: 30px;
+		line-height: 30px;
+		text-align: center;
 		background-color: #F3F3F3;
 		float: left;
 		border-radius: 3px;
 		margin: 10px 5px 0 0;
 		border: 1px solid #DEDDDD;
+		font-size: 0.7em;
+		font-weight: bold;
 	}
+
+		header + div div.center-submenu-content a input {
+			height: 24px;
+		}
 
 	header + div div.right-submenu-content {
 		width: 40%;
@@ -89,14 +98,27 @@ header + div {
 		margin-right: 5px;
 	}
 
+	header + div div a:hover {
+		background-color: #F9F9F9;
+		border: 1px solid #c2c2c2;
+	}
+
 	header + div div.right-submenu-content a {
 		display: block;
 		width: 30px;
 		height: 30px;
+		line-height: 30px;
+		text-align: center;
 		background-color: #F3F3F3;
 		float: right;
 		margin: 10px 0;
 		border: 1px solid #DEDDDD;
+		font-weight: bold;
+	}
+
+	header + div div.right-submenu-content a:hover {
+		background-color: #F9F9F9;
+		border: 1px solid #c2c2c2;
 	}
 
 	header + div div.right-submenu-content a:nth-child(3) {
@@ -134,16 +156,19 @@ header + div {
 
 	.sidebar ul:nth-child(1) li a {
 		display: block;
-		width: 100%;
+		width: 80%;
+		margin: auto;
 		height: 30px;
 		line-height: 30px;
 		text-indent: 20px;
 		text-decoration: none;
 		color: #000;
+		font-size: 0.9em;
 	}
 
 	.sidebar ul:nth-child(1) a:hover {
-		background-color: gray;
+		background-color: #f1f1f1;
+		border-left: 5px solid #D44937;
 	}
 
 	.sidebar ul:nth-child(2) {
@@ -181,22 +206,35 @@ header + div {
 
 .message-row {
 	background-color: #f1f1f1;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px solid #dad9d9;
 	height: 40px;
 	line-height: 40px;
+	font-size: 0.8em;
 }
 
 .message-row:first-of-type {
-	border-top: 1px solid gray;
+	border-top: 1px solid #dad9d9;
 }
+
+	#displayMessages a {
+		/*font-weight: bold;*/
+		width: 95%;
+		display: inline-block;
+	}
+
+/***********************************************************************************************************
+	#displayMessages a:visited {
+		font-weight: normal;
+	}
+***********************************************************************************************************/
 
 	.message-row input {
 		width: 5%;
 		margin: 3px 0;
 	}
 
-	.message-row span:nth-child(2) {
-		width: 12%;
+	.message-row span:nth-child(1) {
+		width: 15%;
 		display: inline-block;
 	}
 
@@ -205,15 +243,21 @@ header + div {
 		display: inline-block;
 	}
 
-		.message-row div span:nth-child(2) {
+		.message-row div span:nth-child(1) {
 			width: auto;
 			display: inline-block;
 		}
 
-	.message-row span:nth-child(4) {
-		width: 10%;
+		.message-row div span:nth-child(2) {
+			color: #9C9C8E;
+		}
+
+	.message-row span:nth-child(3) {
+		width: 15%;
 		display: inline-block;
 		text-align: right;
+		direction: rtl;
+		text-indent: 30px;
 	}
 
 /* --------------------------------- */

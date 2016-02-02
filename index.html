@@ -25,15 +25,27 @@
 			// Function to loop through the geemails object and add rows to the messages variable
 	        function displayRows() {
 	        	for (var i = 0; i < geemails.length; i++) {
-	        		messages += "<a href=\"#popup\"><div class=\"message-row\"><input type=\"checkbox\"><span>" + 
-	        					geemails[i].sender + 
-	        					"</span><div><span>" + 
-	        					geemails[i].subject + 
-	        					"</span> - <span>" + 
-	        					geemails[i].body.substring(0, 70) + 
-	        					"...</span></div><span>" + 
-	        					getFormattedDate(geemails[i].date) + 
-	        					"</span></div></a>";
+	        		if (typeof messages == 'undefined') {
+		        		messages = "<div class=\"message-row\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
+		        					geemails[i].sender + 
+		        					"</span><div><span>" + 
+		        					geemails[i].subject + 
+		        					"</span> - <span>" + 
+		        					geemails[i].body.substring(0, 80) + 
+		        					"...</span></div><span>" + 
+		        					getFormattedDate(geemails[i].date) + 
+		        					"</span></a></div>";
+	        		} else {
+		        		messages += "<div class=\"message-row\"><input type=\"checkbox\"><a href=\"#popup\"><span>" + 
+		        					geemails[i].sender + 
+		        					"</span><div><span>" + 
+		        					geemails[i].subject + 
+		        					"</span> - <span>" + 
+		        					geemails[i].body.substring(0, 80) + 
+		        					"...</span></div><span>" + 
+		        					getFormattedDate(geemails[i].date) + 
+		        					"</span></a></div>";
+		        	}
 	        	}
 	        }
 
@@ -51,7 +63,7 @@
 	        // ****************************************************************************************
 	        console.log(geemails); 
 	        console.log(geemails[0].date); 
-	        console.log(messages); 
+	        console.log(messages);
 
 	    };
 
@@ -77,16 +89,16 @@
 				<h2 class="left-submenu-content">Mail</h2>
 
 				<div class="center-submenu-content">
-					<a href="#" alt="select"></a>
-					<a href="#" alt="refresh"></a>
-					<a href="#" alt="more"></a>
+					<a href="#" alt="select"><input type="checkbox"></a>
+					<a href="index.html" alt="refresh"><img src="images/icon-refresh.png" alt="Refresh"></a>
+					<a href="#" alt="more">More</a>
 				</div>
 
 				<div class="right-submenu-content">
-					<a href="#" alt="settings"></a>
+					<a href="#" alt="settings"><img src="images/icon-settings.png" alt="Settings"></a>
 
-					<a href="#" alt="older"></a>
-					<a href="#" alt="newer"></a>
+					<a href="#" alt="older">&gt;</a>
+					<a href="#" alt="newer">&lt;</a>
 
 					<span id="inboxCount">1-50 of 50</span>
 				</div>
@@ -119,7 +131,21 @@
 
 				<div id="displayMessages">
 
-					
+				<!-- ******************************************************************************** -->
+
+							<div class="message-row">
+								<input type="checkbox">
+								<a href="#popup">
+									<span>sender</span>
+									<div>
+										<span>subject</span>
+										<span>body.substring</span>
+									</div>
+									<span>Date</span>
+								</a>
+							</div>
+
+				<!-- ******************************************************************************** -->
 
 				</div>
 
